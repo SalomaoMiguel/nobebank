@@ -1,0 +1,2 @@
+module BancoCliente::AuthHelper
+end

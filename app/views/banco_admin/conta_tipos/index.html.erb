@@ -1,0 +1,44 @@
+<div class="card mb-3 table-responsive table-responsive-md">
+  <div class="card-header">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
+        <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Tipos de Conta</h5>
+      </div>
+    </div>
+    <% if flash[:error] %>
+      <div class="alert alert-danger col no-print">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>
+        <strong><%= flash[:error] %><% flash.discard %></strong>
+      </div>
+    <% end %>
+    <div id="dashboard-actions no-print">
+      <%= link_to new_banco_admin_conta_tipo_path, class: "btn btn-falcon-default btn-sm float-right no-print" do %> <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1 ">Adicionar</span><% end %>
+      <button class="btn btn-falcon-default btn-sm  mr-2 mb-2  float-right no-print" type="button" value="Imprimir" onClick="window.print()"> <span class="fas fa-print" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Imprimir</span></button>
+    </div>
+  </div>
+  <div class="card  table-responsive table-responsive-md">
+    <div class="card-body border-top p-0">
+      <div class="row no-gutters align-items-center border-bottom py-2 px-3">
+        <table class="table table-hover">
+          <thead>
+          <tr class="text-left">
+            <th class="sort pr-1 align-middle ">Código</th>
+            <th class="sort pr-1 align-middle ">Descrição</th>
+            <th class="sort pr-1 align-middle ">Ativo</th>
+          </tr>
+          </thead>
+          <% @conta_tipos.each do |conta_tipo| %>
+            <tbody>
+            <tr class="text-left">
+              <td class=" text-left align-middle"><%= link_to conta_tipo.codigo, edit_banco_admin_conta_tipo_path(conta_tipo) %></td>
+              <td class=" text-left align-middle"><%= link_to conta_tipo.descricao, edit_banco_admin_conta_tipo_path(conta_tipo) %></td>
+              <td class=" text-left align-middle"><%= link_to conta_tipo.ativo ? "Ativo" : "Desativado", edit_banco_admin_conta_tipo_path(conta_tipo) %></td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

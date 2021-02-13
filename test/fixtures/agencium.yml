@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  banco: one
+  codigo: MyString
+  descricao: MyString
+  numero: MyString
+  ativo: false
+
+two:
+  banco: two
+  codigo: MyString
+  descricao: MyString
+  numero: MyString
+  ativo: false

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Banco:</strong>
+  <%= @agencium.banco %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @agencium.codigo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @agencium.descricao %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @agencium.numero %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= @agencium.ativo %>
+</p>
+
+<%= link_to 'Edit', edit_agencium_path(@agencium) %> |
+<%= link_to 'Back', agencia_path %>

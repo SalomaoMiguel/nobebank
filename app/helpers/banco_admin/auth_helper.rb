@@ -1,0 +1,2 @@
+module BancoAdmin::AuthHelper
+end

@@ -1,0 +1,53 @@
+<div class="row no-gutters table-responsive table-responsive-md">
+  <div class="col-lg-12 pr-lg-2">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><%= conta_tipo.new_record? ? 'Adicionar' : 'Editar' %> Administrador</h5>
+      </div>
+      <div class="card-body bg-light">
+        <%= form_with(model: [:banco_admin, conta_tipo], local: true) do |form| %>
+          <% if conta_tipo.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(conta_tipo.errors.count, "error") %> prohibited this banco_user from being saved:</h2>
+              <ul>
+                <% conta_tipo.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-row">
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :descricao, "Descrição" %>
+                <%= form.text_field :descricao, class: "form-control", placeholder: "Descrição da Conta", required: true %>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :codigo, "Código" %>
+                <%= form.text_field :codigo, class: "form-control", placeholder: "Código da Conta", required: true %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <%= form.label :ativo, "Situação" %>
+                <%= form.select :ativo, [["Ativado", true], ["Desativado", false]], {include_blank: "Selecione Situação"}, class: "form-control", required: true %>
+              </div>
+            </div>
+            <div class="col-12">
+              <hr class="border-dashed border-bottom-0">
+            </div>
+            <div class="form-row">
+              <div class="actions col-md">
+                <%= form.submit 'Salvar', class: "btn btn-primary mr-1 mb-1" %>
+                <%= link_to 'Cancelar', banco_admin_conta_tipos_path, class: "btn btn-outline-danger mr-1 mb-1" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

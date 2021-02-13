@@ -1,0 +1,14 @@
+
+
+<div class="card">
+  <div class="card-body overflow-hidden p-lg-6">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-lg-6"><%= image_tag("nobebank.png", class: " img-fluid mr-2", width: 140) %></div>
+      <div class="col-lg-6 pl-lg-4 my-5 text-center text-lg-left">
+        <h3>Nome: <%= @banco.nome %></h3>
+        <h3>Código: <%= @banco.codigo %></h3>
+        <p class="lead">Dados do banco financeiro</p><%= link_to 'Voltar', banco_admin_painel_visao_geral_path, class:'btn btn-falcon-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

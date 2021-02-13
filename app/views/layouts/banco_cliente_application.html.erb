@@ -31,11 +31,11 @@
 <body>
 
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><%= @cliente_logged.nome %></a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <h1 class="h2 text-white ml-3">Bemvindo(a) - <%= @cliente_logged.nome %></h1>
+  <h1 class="h2 text-white ml-3"></h1>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <%= link_to "Sair", banco_cliente_auth_logout_path, class:'nav-link' %>
@@ -48,8 +48,15 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
+          <li class="nav-item <%= active_page?(banco_cliente_painel_cliente_visao_geral_path) %>">
+            <%= link_to banco_cliente_painel_cliente_visao_geral_path, class: "nav-link" do %>
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span class="fas fa-columns"></span></span> &nbsp;<span class="nav-link-text"> Painel</span>
+              </div>
+            <% end %>
+          </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link " href="#">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
@@ -63,7 +70,7 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
+          <span>Relatórios</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>

@@ -1,0 +1,2 @@
+module BancoAdmin::PainelHelper
+end
