@@ -1,0 +1,13 @@
+//= require jquery3
+//= require activestorage
+//= require popper
+//= require bootstrap-sprockets
+//= require font_awesome5
+//= require jquery.inputmask.min
+//= require banco_admin/lib/is_js/is.min.js
+//= require banco_admin/lib/is_js/is.min.js
+//= require banco_admin/lib/lodash/lodash.min.js
+//= require banco_admin/lib/chart_js/chart.min.js
+//= require banco_admin/lib/datatables/jquery_dataTables.min.js
+//= require banco_admin/lib/stickyfilljs/stickyfill.min.js
+//= require banco_admin/theme.js

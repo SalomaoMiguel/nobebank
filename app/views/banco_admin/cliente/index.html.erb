@@ -1,0 +1,49 @@
+<div class="card mb-3 table-responsive table-responsive-md">
+  <div class="card-header">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
+        <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Clientes</h5>
+      </div>
+    </div>
+    <% if flash[:error] %>
+      <div class="alert alert-danger col no-print">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>
+        <strong><%= flash[:error] %><% flash.discard %></strong>
+      </div>
+    <% end %>
+    <div id="dashboard-actions no-print">
+      <button class="btn btn-falcon-default btn-sm  mr-2 mb-2  float-right no-print" type="button" value="Imprimir" onClick="window.print()"> <span class="fas fa-print" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Imprimir</span></button>
+    </div>
+  </div>
+  <div class="card  table-responsive table-responsive-md">
+    <div class="card-body border-top p-0">
+      <div class="row no-gutters align-items-center border-bottom py-2 px-3">
+        <table class="table table-hover">
+          <thead>
+          <tr class="text-left">
+            <th class=" text-left sort pr-1 align-middle">Nome</th>
+            <th class="sort pr-1 align-middle ">E-mail</th>
+            <th class="sort pr-1 align-middle ">Celular</th>
+            <th class="sort pr-1 align-middle ">Renda</th>
+            <th class="sort pr-1 align-middle ">Nascimento</th>
+            <th class="sort pr-1 align-middle ">Situação</th>
+          </tr>
+          </thead>
+          <% @clientes.each do |cliente| %>
+            <tbody>
+            <tr class="text-left">
+              <td class=" text-left align-middle"><%= cliente.nome %></td>
+              <td class=" text-left align-middle"><%=  cliente.email %></td>
+              <td class=" text-left align-middle"><%=  cliente.celular %></td>
+              <td class=" text-left align-middle">R$ <%=  cliente.renda.to_s.real %></td>
+              <td class=" text-left align-middle"><%= cliente.dt_nascimento.to_date %></td>
+              <td class=" text-left align-middle "> <%= link_to cliente.ativo ? "Ativado" : "Desativado", banco_admin_cliente_ativar_cliente_path(cliente_id: cliente) , class:"btn-sm btn-secondary text-decoration-none" %></td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

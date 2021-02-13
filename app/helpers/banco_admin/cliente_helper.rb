@@ -1,0 +1,2 @@
+module BancoAdmin::ClienteHelper
+end

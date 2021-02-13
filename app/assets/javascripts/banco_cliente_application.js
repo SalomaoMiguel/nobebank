@@ -1,0 +1,10 @@
+//= require jquery3
+//= require activestorage
+//= require popper
+//= require bootstrap-sprockets
+//= require banco_cliente/bootstrap.bundle.min
+//= require font_awesome5
+//= require jquery.inputmask.min
+//= require feather.min
+//= require banco_cliente/Chart.min.js
+//= require banco_cliente/dashboard.js
