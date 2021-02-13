@@ -2,6 +2,7 @@
 class Agencium < ApplicationRecord
   #Relacionamento
   belongs_to :banco
+  has_many :contums
   #Validacao
   validates :descricao, presence: true, length: {maximum: 255}
   validates :codigo, presence: true, length: {maximum: 255}, uniqueness: true

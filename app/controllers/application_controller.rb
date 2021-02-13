@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :check_adm_logged, :check_cliente_logged
+  before_action :check_adm_logged, :check_cliente_logged, :relat_contas
 
   def check_adm_logged
     if session[:usuario_logged] && session[:expires_admin].to_time.try(:future?)
@@ -20,5 +20,9 @@ class ApplicationController < ActionController::Base
   # Tratamento de messages
   def messages(object, success='')
     object.errors.blank? ? flash[:notice] = success : flash[:error] = object.errors.full_messages.join("<br />").html_safe
+  end
+
+  def relat_contas
+    @conta = Contum.joins(:agencium).order(:descricao)
   end
 end

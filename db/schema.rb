@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_131312) do
+ActiveRecord::Schema.define(version: 2021_02_13_120039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,24 @@ ActiveRecord::Schema.define(version: 2021_02_12_131312) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contum", force: :cascade do |t|
+    t.bigint "agencium_id", null: false
+    t.bigint "cliente_id", null: false
+    t.bigint "conta_tipo_id", null: false
+    t.string "numero", null: false
+    t.date "dt_abertura", null: false
+    t.date "dt_fechamento"
+    t.boolean "ativo", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agencium_id"], name: "index_contum_on_agencium_id"
+    t.index ["cliente_id"], name: "index_contum_on_cliente_id"
+    t.index ["conta_tipo_id"], name: "index_contum_on_conta_tipo_id"
+  end
+
   add_foreign_key "agencium", "banco"
   add_foreign_key "banco_user", "banco"
+  add_foreign_key "contum", "agencium"
+  add_foreign_key "contum", "cliente"
+  add_foreign_key "contum", "conta_tipo"
 end
