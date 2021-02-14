@@ -1,0 +1,2 @@
+module BancoAdmin::ContaHelper
+end

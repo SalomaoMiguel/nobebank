@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agencium: one
+  cliente: one
+  conta_tipo: one
+  numero: MyString
+  dt_abertura: 2021-02-13
+  dt_fechamento: 2021-02-13
+  ativo: false
+
+two:
+  agencium: two
+  cliente: two
+  conta_tipo: two
+  numero: MyString
+  dt_abertura: 2021-02-13
+  dt_fechamento: 2021-02-13
+  ativo: false

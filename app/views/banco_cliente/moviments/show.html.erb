@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contum:</strong>
+  <%= @moviment.contum %>
+</p>
+
+<p>
+  <strong>Conta movimento tipo:</strong>
+  <%= @moviment.conta_movimento_tipo %>
+</p>
+
+<p>
+  <strong>Valor movimento:</strong>
+  <%= @moviment.valor_movimento %>
+</p>
+
+<%= link_to 'Edit', edit_moviment_path(@moviment) %> |
+<%= link_to 'Back', moviments_path %>

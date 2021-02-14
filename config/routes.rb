@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
 #Root Principal
   root 'home#index'
 #Banco Admin
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
     get 'auth/logout'
     get 'painel_cliente/visao_geral'
     resources :conta do collection do get :encerrar_conta; patch :encerrar_conta;  end end
+    resources :moviments
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

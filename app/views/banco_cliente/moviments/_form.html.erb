@@ -1,0 +1,62 @@
+<div class="row no-gutters table-responsive table-responsive-md">
+  <div class="col-lg-12 pr-lg-2">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><%= moviment.new_record? ? 'Adicionar' : 'Editar' %> Movimentação</h5>
+      </div>
+      <div class="card-body bg-light">
+        <%= form_with(model: [:banco_cliente, moviment], local: true) do |form| %>
+          <% if moviment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(moviment.errors.count, "error") %> prohibited this moviment from being saved:</h2>
+
+              <ul>
+                <% moviment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-row">
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :contum_id, "Conta" %>
+                <%= form.select :contum_id,  @contas.joins(:conta_tipo).collect {|conta| [conta.conta_tipo.descricao, conta.id ]}, {include_blank: "Conta"}, {class: 'custom-select',  required: true} %>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :conta_movimento_tipo_id, "Tipo de conta" %>
+                <%= form.select :conta_movimento_tipo_id,  @conta_movimento_tipos.collect {|conta_tipo| [conta_tipo.descricao, conta_tipo.id ]}, {include_blank: "Movimento"}, {class: 'custom-select', required: true} %>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :valor_movimento, "Valor" %>
+                <%= form.text_field :valor_movimento, class: "form-control", placeholder: "Valor" %>
+              </div>
+            </div>
+            <% if  @moviment.codigo_movimento_tipo == "Mov-T001"  %>
+              <div class="col-md">
+                <div class="form-group">
+                  <%= form.label :numero_transferencia, "Valor" %>
+                  <%= form.text_field :numero_transferencia, class: "form-control", placeholder: "Valor" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-12">
+            <hr class="border-dashed border-bottom-0">
+          </div>
+          <div class="form-row">
+            <div class="actions col-md">
+              <%= form.submit 'Salvar', class: "btn btn-primary mr-1 mb-1" %>
+              <%= link_to 'Cancelar', banco_cliente_moviments_path, class: "btn btn-outline-danger mr-1 mb-1" %>
+            </div>
+          </div>
+          </div>
+          </div>
+        <% end %>
+        </div>
+</div>
+

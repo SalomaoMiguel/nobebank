@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conta: one
+  valor_movimento: 9.99
+  conta_movimento_tipo: one
+
+two:
+  conta: two
+  valor_movimento: 9.99
+  conta_movimento_tipo: two

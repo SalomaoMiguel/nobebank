@@ -1,0 +1,53 @@
+<div class="row no-gutters table-responsive table-responsive-md">
+  <div class="col-lg-12 pr-lg-2">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><%= contum.new_record? ? 'Adicionar' : 'Editar' %> Conta</h5>
+      </div>
+      <div class="card-body bg-light">
+        <%= form_with(model: [:banco_cliente, contum], local: true) do |form| %>
+          <% if contum.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(contum.errors.count, "error") %> Não é possível salvar esta conta...:</h2>
+              <ul>
+                <% contum.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-row">
+            <div class="col-md">
+              <%= form.hidden_field :cliente_id, value: @cliente_logged.id %>
+              <div class="form-group">
+                <%= form.label :agencium_id, "Agência" %>
+                <%= form.select :agencium_id,  @agencias.collect {|agencia| [agencia.descricao, agencia.id ]}, {include_blank: "Agência"}, {class: 'custom-select',  required: true} %>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :conta_tipo_id, "Tipo de conta" %>
+                <%= form.select :conta_tipo_id,  @conta_tipos.collect {|conta| [conta.descricao, conta.id ]}, {include_blank: "Conta Tipo"}, {class: 'custom-select', required: true} %>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <%= form.label :valor, "Valor" %>
+                <%= form.text_field :valor, class: "form-control", placeholder: "Valor" %>
+              </div>
+            </div>
+            <div class="col-12">
+              <hr class="border-dashed border-bottom-0">
+            </div>
+            <div class="form-row">
+              <div class="actions col-md">
+                <%= form.submit 'Salvar', class: "btn btn-primary mr-1 mb-1" %>
+                <%= link_to 'Cancelar', banco_cliente_conta_path, class: "btn btn-outline-danger mr-1 mb-1" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

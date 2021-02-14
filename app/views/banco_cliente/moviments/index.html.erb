@@ -1,0 +1,44 @@
+<div class="card mb-3 table-responsive table-responsive-md">
+  <div class="card-header">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
+        <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Movimentações</h5>
+      </div>
+    </div>
+    <% if flash[:error] %>
+      <div class="alert alert-danger col no-print">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>
+        <strong><%= flash[:error] %><% flash.discard %></strong>
+      </div>
+    <% end %>
+    <div id="dashboard-actions no-print">
+      <%= link_to new_banco_cliente_moviment_path, class: "btn btn-falcon-default btn-sm float-right no-print" do %> <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1 ">Adicionar</span><% end %>
+      <button class="btn btn-falcon-default btn-sm  mr-2 mb-2  float-right no-print" type="button" value="Imprimir" onClick="window.print()"> <span class="fas fa-print" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Imprimir</span></button>
+    </div>
+  </div>
+  <div class="card  table-responsive table-responsive-md">
+    <div class="card-body border-top p-0">
+      <div class="row no-gutters align-items-center border-bottom py-2 px-3">
+        <table class="table table-hover">
+          <thead>
+          <tr class="text-left">
+            <th class=" text-left sort pr-1 align-middle">Movimentação</th>
+            <th class="sort pr-1 align-middle ">Valor</th>
+            <th class="sort pr-1 align-middle ">Data</th>
+          </tr>
+          </thead>
+          <% @moviments.each do |conta_movimento| %>
+            <tbody>
+            <tr class="text-left">
+              <td class=" text-left align-middle"><%= conta_movimento.conta_movimento_tipo.descricao%></td>
+              <td class=" text-left align-middle"><%= conta_movimento.valor_movimento.reais%></td>
+              <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date%></td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Agencium:</strong>
+  <%= @contum.agencium %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @contum.cliente %>
+</p>
+
+<p>
+  <strong>Conta tipo:</strong>
+  <%= @contum.conta_tipo %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @contum.numero %>
+</p>
+
+<p>
+  <strong>Dt abertura:</strong>
+  <%= @contum.dt_abertura %>
+</p>
+
+<p>
+  <strong>Dt fechamento:</strong>
+  <%= @contum.dt_fechamento %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= @contum.ativo %>
+</p>
+
+<%= link_to 'Edit', edit_contum_path(@contum) %> |
+<%= link_to 'Back', conta_path %>

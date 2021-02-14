@@ -1,0 +1,57 @@
+<div class="card mb-3 table-responsive table-responsive-md">
+  <div class="card-header">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
+        <% if  @conta.where("ativo = true") %>
+        <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"> Contas Ativadas</h5>
+         <% else %>
+          <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"> Contas Desativadas</h5>
+         <% end %>
+      </div>
+    </div>
+    <% if flash[:error] %>
+      <div class="alert alert-danger col no-print">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>
+        <strong><%= flash[:error] %><% flash.discard %></strong>
+      </div>
+    <% end %>
+    <div id="dashboard-actions no-print">
+      <%= link_to new_banco_cliente_contum_path, class: "btn btn-falcon-default btn-sm float-right no-print" do %> <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1 ">Adicionar</span><% end %>
+      <button class="btn btn-falcon-default btn-sm  mr-2 mb-2  float-right no-print" type="button" value="Imprimir" onClick="window.print()"> <span class="fas fa-print" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Imprimir</span></button>
+    </div>
+  </div>
+  <div class="card  table-responsive table-responsive-md">
+    <div class="card-body border-top p-0">
+      <div class="row no-gutters align-items-center border-bottom py-2 px-3">
+          <table class="table table-hover">
+            <thead>
+            <tr class="text-left">
+              <th class=" text-left sort pr-1 align-middle">Número</th>
+              <th class="sort pr-1 align-middle ">Abertura</th>
+              <th class="sort pr-1 align-middle ">Conta</th>
+              <th class="sort pr-1 align-middle ">Saldo</th>
+              <th class="sort pr-1 align-middle ">Situação</th>
+            </tr>
+            </thead>
+            <% @conta.each do |contum| %>
+              <tbody>
+              <tr class="text-left">
+                <td class=" text-left align-middle"><%= contum.numero %></td>
+                <td class=" text-left align-middle"><%=  contum.dt_abertura %></td>
+                <td class=" text-left align-middle"><%=  contum.conta_tipo.descricao %></td>
+                <td class=" text-left align-middle">R$ <%=  contum.valor.reais %></td>
+                <% if contum.ativo %>
+                <td class=" text-left align-middle"><%= link_to contum.ativo ? "Ativada" : "Desativada", encerrar_conta_banco_cliente_conta_path(id: contum), method: :patch, data: { confirm: 'Deseja realmente encerrar esta conta?'}, class:"btn-sm btn-secondary text-decoration-none"    %></td>
+                <% else %>
+                  <td class=" text-left align-middle">Desativada <span class="text-muted">(Contate seu gerente para ativá-la)</span>  </td>
+                <% end %>
+              </tr>
+              </tbody>
+            <% end %>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
