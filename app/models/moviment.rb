@@ -45,6 +45,8 @@ class Moviment < ApplicationRecord
         time_agora = Time.now
         if time_agora > Time.parse('9:00am') or time_agora < Time.parse('18:00am')
           conta.valor += -5
+        else
+          conta.valor += -7
         if self.valor_movimento >= 1000
           conta.valor += -10
         end

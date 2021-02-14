@@ -21,12 +21,36 @@ class BancoCliente::MovimentsController < ApplicationController
   # GET /moviments/1/edit
   def edit
   end
+  #GET /moeviments/extract_moviment
 
+  def extract_moviment
+    if params[:filtro]
+      dt_inicio = Date.parse params[:filtro][:dt_ini] rescue nil
+      dt_final = Date.parse params[:filtro][:dt_fim] rescue nil
+      @dt_inicio = dt_inicio
+      @dt_final = dt_final
+      message_erro = ""
+      message_erro += " Data Inicio ou Data final não pode ser vazio" if (dt_inicio.nil? or dt_final.nil?)
+      message_erro += " Data Inicio  não pode ser maior que  Data final" if message_erro.blank? and (dt_inicio.to_date > dt_final.to_date)
+      message_erro += " Data não pode conter mais que 31 dias" if message_erro.blank? and  ((dt_final - dt_inicio).to_i > 31)
+      if  !message_erro.blank?
+        flash[:error] = message_erro
+        @moviments = []
+      else
+        condicoes = "true"
+        condicoes += " and dt_emisaao >= '#{dt_inicio}' and dt_emisaao <= '#{dt_final}' "
+        @moviments = Moviment.where(condicoes).order(:dt_emisaao)
+      end
+    else
+      @moviments = Moviment.order(:dt_emisaao)
+    end
+  end
   # POST /moviments or /moviments.json
   def create
     @moviment = Moviment.new(moviment_params)
 
     respond_to do |format|
+      @moviment.dt_emisaao = Date.today.to_date.to_s
       @moviment.tipo_movimentacao
       @moviment.taxa
       if @moviment.save
@@ -73,6 +97,6 @@ class BancoCliente::MovimentsController < ApplicationController
   end
     # Only allow a list of trusted parameters through.
     def moviment_params
-      params.require(:moviment).permit(:contum_id, :conta_movimento_tipo_id, :valor_movimento, :numero_transferencia)
+      params.require(:moviment).permit(:contum_id, :conta_movimento_tipo_id, :valor_movimento, :numero_transferencia, :dt_emisaao)
     end
 end

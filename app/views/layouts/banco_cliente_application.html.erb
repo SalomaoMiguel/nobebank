@@ -30,7 +30,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow no-print">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><%= @cliente_logged.nome %></a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -43,11 +43,11 @@
   </ul>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse no-print">
+      <div class="sidebar-sticky pt-3 no-print">
+        <ul class="nav flex-column no-print">
           <li class="nav-item <%= active_page?(banco_cliente_painel_cliente_visao_geral_path) %>">
             <%= link_to banco_cliente_painel_cliente_visao_geral_path, class: "nav-link" do %>
               <div class="d-flex align-items-center">
@@ -61,19 +61,6 @@
                 <span class="nav-link-icon"><span class="fas fa-file-invoice-dollar"></span></span> &nbsp;<span class="nav-link-text"> Movimentações</span>
               </div>
             <% end %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Orders
-            </a>
           </li>
           <div class="settings px-3 px-xl-0">
             <div class="navbar-vertical-divider px-0">
@@ -100,11 +87,12 @@
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
+          <li class="nav-item <%= active_page?(extract_moviment_banco_cliente_moviments_path) %>">
+            <%= link_to extract_moviment_banco_cliente_moviments_path, class: "nav-link" do %>
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><span class="fas fa-book"></span></span> &nbsp;<span class="nav-link-text"> Extratos</span>
+              </div>
+            <% end %>
           </li>
         </ul>
       </div>
@@ -124,9 +112,6 @@
         <% end %>
         <%= yield %>
       </div>
-
-      <h2>Section title</h2>
-
     </main>
   </div>
 </div>

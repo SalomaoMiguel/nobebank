@@ -1,0 +1,48 @@
+@media print{
+
+  .conteudo {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+  }
+
+  * {
+    background:transparent !important;
+    color:#000 !important;
+    text-shadow:none !important;
+    filter:none !important;
+    -ms-filter:none !important;
+  }
+
+  body {
+    margin:0;
+    padding:0;
+    line-height: 1.4em;
+  }
+
+  .semimpressao{
+    display: none;
+  }
+
+  nav, footer, video, audio, object, embed {
+    display:none;
+  }
+  .print {
+    display:block;
+  }
+  .page-break	{ page-break-before: always; }
+  .no-print {
+    display:none;
+  }
+  .wrap {
+    width: 100%;
+    margin: 0;
+    float: none !important;
+  }
+  p {
+    widows: 3;
+  }
+  p {
+    orphans: 3;
+  }
+}

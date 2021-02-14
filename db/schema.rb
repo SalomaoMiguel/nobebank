@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_043015) do
+ActiveRecord::Schema.define(version: 2021_02_14_222248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_043015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "numero_transferencia"
+    t.date "dt_emisaao"
     t.index ["conta_movimento_tipo_id"], name: "index_moviment_on_conta_movimento_tipo_id"
     t.index ["contum_id"], name: "index_moviment_on_contum_id"
   end
