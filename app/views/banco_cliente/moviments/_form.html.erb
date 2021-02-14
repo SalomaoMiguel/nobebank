@@ -36,14 +36,13 @@
                 <%= form.text_field :valor_movimento, class: "form-control", placeholder: "Valor" %>
               </div>
             </div>
-            <% if  @moviment.codigo_movimento_tipo == "Mov-T001"  %>
               <div class="col-md">
                 <div class="form-group">
-                  <%= form.label :numero_transferencia, "Valor" %>
-                  <%= form.text_field :numero_transferencia, class: "form-control", placeholder: "Valor" %>
+                  <%= form.label :numero_transferencia, "Numero de conta" %>
+                  <%= form.text_field :numero_transferencia, class: "form-control", placeholder: "Digite 12 numeros de conta válida" %>
+                  <small> Preencher somente em Trasnferência</small>
                 </div>
               </div>
-            <% end %>
           </div>
           <div class="col-12">
             <hr class="border-dashed border-bottom-0">

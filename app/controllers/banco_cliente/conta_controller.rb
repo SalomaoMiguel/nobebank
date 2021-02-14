@@ -6,7 +6,7 @@ class BancoCliente::ContaController < ApplicationController
 
   # GET /conta or /conta.json
   def index
-
+    @conta = @cliente_logged.contums.order(:dt_abertura)
   end
 
   # GET /conta/1 or /conta/1.json

@@ -28,7 +28,8 @@
             <th class="sort pr-1 align-middle ">Data</th>
           </tr>
           </thead>
-          <% @moviments.each do |conta_movimento| %>
+          <% @moviments.each do |movimento| %>
+          <% movimento.moviments.each do |conta_movimento| %>
             <tbody>
             <tr class="text-left">
               <td class=" text-left align-middle"><%= conta_movimento.conta_movimento_tipo.descricao%></td>
@@ -36,6 +37,7 @@
               <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date%></td>
             </tr>
             </tbody>
+          <% end %>
           <% end %>
         </table>
       </div>

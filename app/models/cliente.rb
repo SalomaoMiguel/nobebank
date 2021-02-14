@@ -2,6 +2,7 @@
 class Cliente < ApplicationRecord
   #Relacionamento
   has_many :contums
+  has_many :moviments
   #Validacao
   validates :nome, presence: true, length: {maximum: 255}
   validates :email, format: { multiline: true,  with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, presence: true, uniqueness: true

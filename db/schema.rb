@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_020939) do
+ActiveRecord::Schema.define(version: 2021_02_14_043015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,16 +65,6 @@ ActiveRecord::Schema.define(version: 2021_02_14_020939) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "conta_movimentum", force: :cascade do |t|
-    t.bigint "contum_id"
-    t.bigint "conta_movimento_tipo_id"
-    t.decimal "valor_movimento"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["conta_movimento_tipo_id"], name: "index_conta_movimentum_on_conta_movimento_tipo_id"
-    t.index ["contum_id"], name: "index_conta_movimentum_on_contum_id"
-  end
-
   create_table "conta_tipo", force: :cascade do |t|
     t.string "codigo", null: false
     t.string "descricao", null: false
@@ -105,14 +95,13 @@ ActiveRecord::Schema.define(version: 2021_02_14_020939) do
     t.decimal "valor_movimento", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "numero_transferencia"
     t.index ["conta_movimento_tipo_id"], name: "index_moviment_on_conta_movimento_tipo_id"
     t.index ["contum_id"], name: "index_moviment_on_contum_id"
   end
 
   add_foreign_key "agencium", "banco"
   add_foreign_key "banco_user", "banco"
-  add_foreign_key "conta_movimentum", "conta_movimento_tipo"
-  add_foreign_key "conta_movimentum", "contum"
   add_foreign_key "contum", "agencium"
   add_foreign_key "contum", "cliente"
   add_foreign_key "contum", "conta_tipo"

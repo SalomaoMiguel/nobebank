@@ -1,5 +1,6 @@
 class BancoAdmin::ContaController < ApplicationController
   layout 'banco_admin_application'
+  skip_before_action  :check_cliente_logged
   def index
 
   end

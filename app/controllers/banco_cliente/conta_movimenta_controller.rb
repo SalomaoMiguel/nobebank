@@ -2,7 +2,7 @@ class BancoCliente::ContaMovimentaController < ApplicationController
   layout 'banco_cliente_application'
   before_action :load_relations
   def index
-    @conta_movimentos = ContaMovimentum.joins(:conta_movimento_tipo).order(:descricao)
+    @conta_movimentos = @cliente_logged.conta_movimentum.joins(:conta_movimento_tipo).order(:descricao)
   end
 
   def new

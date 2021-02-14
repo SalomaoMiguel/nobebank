@@ -6,6 +6,6 @@ class Contum < ApplicationRecord
   belongs_to :conta_tipo
   has_many :moviments
   #Validacao
-  validates :numero, :numero_transferencia, presence: true, length: { in: 12..12, message: "Não poder ser menos que e nem mais que 12 números"}
+  validates :numero, presence: true, length: { in: 12..12, message: "Não poder ser menos que e nem mais que 12 números"}
   validates :ativo, inclusion: { in: [ true, false ] }
 end

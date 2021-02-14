@@ -6,7 +6,7 @@ class BancoCliente::MovimentsController < ApplicationController
 
   # GET /moviments or /moviments.json
   def index
-    @moviments = Moviment.all
+    @moviments = @cliente_logged.contums
   end
 
   # GET /moviments/1 or /moviments/1.json
@@ -28,6 +28,7 @@ class BancoCliente::MovimentsController < ApplicationController
 
     respond_to do |format|
       @moviment.tipo_movimentacao
+      @moviment.taxa
       if @moviment.save
         format.html { redirect_to banco_cliente_moviments_path, notice: "Moviment was successfully created." }
         format.json { render :show, status: :created, location: @moviment }
@@ -72,6 +73,6 @@ class BancoCliente::MovimentsController < ApplicationController
   end
     # Only allow a list of trusted parameters through.
     def moviment_params
-      params.require(:moviment).permit(:contum_id, :conta_movimento_tipo_id, :valor_movimento)
+      params.require(:moviment).permit(:contum_id, :conta_movimento_tipo_id, :valor_movimento, :numero_transferencia)
     end
 end
