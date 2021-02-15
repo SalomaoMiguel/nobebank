@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       date = Date.parse params[:dt_nascimento]
       @cliente.dt_nascimento = date.to_date
       if @cliente.save
-      messages(@cliente, "Cliente criado com sucesso. Aguarde o retorno de ativação pelo seu email")
+      messages(@cliente, "Cliente criado com sucesso.")
       redirect_to root_path
       else
         messages(@cliente, "Cliente não criado")

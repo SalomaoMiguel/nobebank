@@ -18,7 +18,7 @@ if Agencium.all.empty?
   Agencium.create([{codigo: "MG-A", numero: "001", descricao: "Minas Gerais", banco_id: @banco.id}, {codigo: "Go-A", numero: "001", descricao: "Goias", banco_id: @banco.id}])
 end
 if ContaTipo.all.empty?
-  ContaTipo.create([{codigo: "CC-001", descricao: "Conta-Corrente"}, {codigo: "CP-001", descricao: "Conta-Poupança"}])
+  ContaTipo.create([{codigo: "CC-001", descricao: "Conta-Corrente",  banco_id: @banco.id}, {codigo: "CP-001", descricao: "Conta-Poupança",  banco_id: @banco.id}])
 end
 if ContaMovimentoTipo.all.empty?
   ContaMovimentoTipo.create([{codigo: "Mov-T001", descricao: "Transferência"}, {codigo: "Mov-R001", descricao: "Retirada"}, {codigo: "Mov-D001", descricao: "Depósito"}])
