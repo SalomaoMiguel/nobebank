@@ -51,8 +51,8 @@ class BancoCliente::MovimentsController < ApplicationController
 
     respond_to do |format|
       @moviment.dt_emisaao = Date.today.to_date.to_s
-      @moviment.tipo_movimentacao
       @moviment.taxa
+      @moviment.tipo_movimentacao
       if @moviment.save
         format.html { redirect_to banco_cliente_moviments_path, notice: "Moviment was successfully created." }
         format.json { render :show, status: :created, location: @moviment }
