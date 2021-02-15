@@ -1,3 +1,53 @@
 <div class="table-responsive card-body">
-<h1>BancoCliente::PainelCliente#visao_geral</h1>
+<div class="form-row mb-3">
+  <div class="col-md">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Saldo</h4>
+      <p class="card-text">
+        <div class="form-group">
+        <h2 class="text-facebook">R$ <%= @contums.sum(:valor).reais  %></h2>
+        <small class="text-muted"> Saldo total de contas ativas</small>
+        </div>
+      </p>
+    </div>
+  </div>
+  </div>
+  <div class="col-md">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Movimentação Recente</h4>
+        <p class="card-text">
+        <div class="form-group">
+          <% @moviments.each do |conta_movimento| %>
+          <% conta_movimento.moviments.each do |movimento| %>
+              <% @movimento = movimento.valor_movimento %>
+              <% @descricao = movimento.conta_movimento_tipo.descricao %>
+           <% end %>
+           <% end %>
+          <h2 class="text-facebook">R$ <%= @movimento.reais   %> - <%= @descricao %></h2>
+          <small class="text-muted"> Ultima movimentação feita</small>
+        </div>
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="form-row mb-3">
+  <div class="col-md">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Dados</h4>
+        <p class="card-text">
+        <div class="form-group">
+          <h2 class="text-facebook"><span class="text-muted">Nome </span><%= @cliente_logged.nome  %></h2>
+          <h4 class="text-facebook"><span class="text-muted">Celular </span><%= @cliente_logged.celular  %></h4>
+          <h4 class="text-facebook"><span class="text-muted">E-mail </span><%= @cliente_logged.email  %></h4>
+          <small class="text-muted">Dados de perfil</small>
+        </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
