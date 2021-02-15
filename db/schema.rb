@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_222248) do
     t.string "codigo", null: false
     t.string "descricao", null: false
     t.string "numero", null: false
-    t.boolean "ativo", null: false
+    t.boolean "ativo", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["banco_id"], name: "index_agencium_on_banco_id"

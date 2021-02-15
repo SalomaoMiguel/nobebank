@@ -5,7 +5,7 @@ class CreateAgencium < ActiveRecord::Migration[5.2]
       t.string :codigo, null: false
       t.string :descricao, null: false
       t.string :numero, null: false
-      t.boolean :ativo, null: false, defualta: true
+      t.boolean :ativo, null: false, default: true
 
       t.timestamps
     end
