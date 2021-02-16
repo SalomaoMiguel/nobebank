@@ -45,7 +45,7 @@
         </tr>
         </thead>
         <% @moviments.each do |conta_movimento| %>
-          <%  if @cliente_logged.contums.where(contum_id: conta_movimento.id) %>
+          <%  if @cliente_logged.contums.find_by_id(conta_movimento.contum_id) %>
             <tbody>
             <tr class="text-left">
               <td class=" text-left align-middle"><%= conta_movimento.conta_movimento_tipo.descricao%></td>

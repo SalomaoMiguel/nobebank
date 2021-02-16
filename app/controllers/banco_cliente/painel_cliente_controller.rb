@@ -9,6 +9,6 @@ class BancoCliente::PainelClienteController < ApplicationController
   protected
   def load_relations
     @contums = @cliente_logged.contums.where("ativo = true").order(:conta_valor)
-    @moviments = @cliente_logged.contums
+    @moviments = Moviment.order(:dt_emisaao)
   end
 end

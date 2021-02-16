@@ -11,7 +11,9 @@ class Moviment < ApplicationRecord
         conta = Contum.find(self.contum.id)
         conta.valor = conta.valor - self.valor_movimento
         if conta.valor <= 0
-          conta.valor = (self.valor_movimento * 0.2) / 100
+          valor_retorno = (self.valor_movimento * 0.2) / 100
+          conta.valor = valor_retorno
+          self.valor_movimento = self.valor_movimento - valor_retorno
         end
         conta_transferencia = Contum.find_by_numero(self.numero_transferencia)
         conta_transferencia.valor = (conta_transferencia.valor + self.valor_movimento)
@@ -22,7 +24,9 @@ class Moviment < ApplicationRecord
           conta = Contum.find(self.contum.id)
           conta.valor = conta.valor - self.valor_movimento
           if conta.valor <= 0
-            conta.valor = (self.valor_movimento * 0.2) / 100
+            valor_retorno = (self.valor_movimento * 0.2) / 100
+            conta.valor = valor_retorno
+            self.valor_movimento = self.valor_movimento - valor_retorno
           end
           manager = conta
         else

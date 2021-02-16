@@ -20,9 +20,9 @@
         <p class="card-text">
         <div class="form-group">
           <% @moviments.each do |conta_movimento| %>
-          <% conta_movimento.moviments.each do |movimento| %>
-              <% @movimento = movimento.valor_movimento %>
-              <% @descricao = movimento.conta_movimento_tipo.descricao %>
+            <%  if @cliente_logged.contums.find_by_id(conta_movimento.contum_id) %>
+              <% @movimento = conta_movimento.valor_movimento %>
+              <% @descricao = conta_movimento.conta_movimento_tipo.descricao %>
            <% end %>
            <% end %>
           <h2 class="text-facebook">R$ <%= @movimento.reais   %> - <%= @descricao %></h2>
