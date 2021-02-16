@@ -19,11 +19,11 @@
         </div>
         <div  id="dt_ini" class="col-md">
           <small class="text-smallcaps">Data Inícial</small>
-          <%= text_field :filtro, :dt_ini, value: params[:filtro]  ? params[:filtro][:dt_ini] : DateTime.current.to_date, class:'form-control btn-sm'%>
+          <%= text_field :filtro, :dt_ini, value: params[:filtro]  ? params[:filtro][:dt_ini] : DateTime.current.to_date.to_s_br, class:'form-control btn-sm'%>
         </div>
         <div  class="col-md">
           <small class="text-smallcaps">Data Final</small>
-          <%= text_field :filtro, :dt_fim, value: params[:filtro]  ? params[:filtro][:dt_fim] : DateTime.current.to_date, class:'form-control btn-sm' %>
+          <%= text_field :filtro, :dt_fim, value: params[:filtro]  ? params[:filtro][:dt_fim] : DateTime.current.to_date.to_s_br, class:'form-control btn-sm' %>
         </div>
       <div  class="col-md-1">
         <small class="text-smallcaps">&nbsp;</small>
@@ -50,7 +50,7 @@
             <tr class="text-left">
               <td class=" text-left align-middle"><%= conta_movimento.conta_movimento_tipo.descricao%></td>
               <td class=" text-left align-middle"><%= conta_movimento.valor_movimento.reais%></td>
-              <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date%></td>
+              <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date.to_s_br%></td>
             </tr>
             </tbody>
           <% end %>

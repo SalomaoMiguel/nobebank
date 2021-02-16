@@ -34,7 +34,7 @@
             <tr class="text-left">
               <td class=" text-left align-middle"><%= conta_movimento.conta_movimento_tipo.descricao%></td>
               <td class=" text-left align-middle"><%= conta_movimento.valor_movimento.reais%></td>
-              <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date%></td>
+              <td class=" text-left align-middle"><%= conta_movimento.created_at.to_date.to_s_br%></td>
             </tr>
             </tbody>
           <% end %>

@@ -37,7 +37,7 @@
               <td class=" text-left align-middle"><%=  cliente.email %></td>
               <td class=" text-left align-middle"><%=  cliente.celular %></td>
               <td class=" text-left align-middle">R$ <%=  cliente.renda.to_s.real %></td>
-              <td class=" text-left align-middle"><%= cliente.dt_nascimento.to_date %></td>
+              <td class=" text-left align-middle"><%= cliente.dt_nascimento.to_date.to_s_br %></td>
               <td class=" text-left align-middle "> <%= link_to cliente.ativo ? "Ativado" : "Desativado", banco_admin_cliente_ativar_cliente_path(cliente_id: cliente) , class:"btn-sm btn-secondary text-decoration-none" %></td>
             </tr>
             </tbody>

@@ -36,7 +36,7 @@
               <td class=" text-left align-middle"><%= contum.agencium.descricao %></td>
               <td class=" text-left align-middle"><%= contum.cliente.nome %></td>
               <td class=" text-left align-middle"><%= contum.numero %></td>
-              <td class=" text-left align-middle"><%=  contum.dt_abertura %></td>
+              <td class=" text-left align-middle"><%=  contum.dt_abertura.to_date.to_s_br %></td>
               <td class=" text-left align-middle"><%=  contum.conta_tipo.descricao %></td>
               <td class=" text-left align-middle"><%= link_to contum.ativo ? "Ativada" : "Desativada", banco_admin_conta_gerenciar_conta_path(id: contum), data: { confirm: 'Deseja realmente encerrar esta conta?'}, class:"btn-sm btn-secondary text-decoration-none" %> </td>
             </tr>

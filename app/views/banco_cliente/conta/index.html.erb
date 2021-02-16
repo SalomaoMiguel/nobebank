@@ -38,7 +38,7 @@
               <tbody>
               <tr class="text-left">
                 <td class=" text-left align-middle"><%= contum.numero %></td>
-                <td class=" text-left align-middle"><%=  contum.dt_abertura %></td>
+                <td class=" text-left align-middle"><%=  contum.dt_abertura.to_date.to_s_br %></td>
                 <td class=" text-left align-middle"><%=  contum.conta_tipo.descricao %></td>
                 <td class=" text-left align-middle">R$ <%=  contum.valor.reais %></td>
                 <% if contum.ativo %>
