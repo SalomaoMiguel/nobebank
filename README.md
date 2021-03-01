@@ -5,9 +5,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 5.2.4.5
 
-* System dependencies
+* System dependencies 
 
 * Configuration
 
@@ -20,5 +20,6 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+* Link site deployed https://nobebankcrout.herokuapp.com/
 
 * ...
